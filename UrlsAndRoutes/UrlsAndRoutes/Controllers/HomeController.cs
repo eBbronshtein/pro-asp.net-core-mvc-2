@@ -15,14 +15,15 @@ namespace UrlsAndRoutes.Controllers
             }
         );
 
-        public ViewResult CustomVariable(string id)
+        public ViewResult List(string id)
         {
             Result r = new Result
             {
                 Controller = nameof(HomeController),
-                Action = nameof(CustomVariable),
+                Action = nameof(List),
             };
-            r.Data["Id"] = id;
+            r.Data["Id"] = id ?? "<no value>";
+            r.Data["catchall"] = RouteData.Values["catchall"];
 
             return View("Result", r);
         }

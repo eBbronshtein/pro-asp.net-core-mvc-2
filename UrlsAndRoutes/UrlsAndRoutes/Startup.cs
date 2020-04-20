@@ -22,25 +22,10 @@ namespace UrlsAndRoutes
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "MyRoute1",
-                    template: "{controller:regex(^H.*)=Home}/{action=Index}/{id?}");
-
-                routes.MapRoute(
-                    name: "MyRoute2",
-                    template: "{controller=Home}/{action=Index}/{id:int?}");
-
-                routes.MapRoute(
-                    name: "MyRoute3",
-                    template: "{controller}/{action}/{id?}",
-                    defaults: new { controller = "Home", action = "Index" },
-                    constraints: new { id = new IntRouteConstraint() });
-
-                routes.MapRoute(
-                    name: "MyRoute4",
-                    template: "{controller:regex(^H.*)=Home}/" + "{action:regex(^Index$|^About$)=Index}/{id?}");
+            app.UseMvc(
+                routes => {
+                    routes.MapRoute(name: "MyRoute",
+                    template: "{controller=Home}/{action=Index}/{id:range(10,20)?}");
             });
         }
     }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace UrlsAndRoutes
@@ -21,7 +22,11 @@ namespace UrlsAndRoutes
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            app.UseMvc();
+            app.UseMvc(
+                routes => {
+                    routes.MapRoute(name: "MyRoute",
+                    template: "{controller=Home}/{action=Index}/{id:range(10,20)?}");
+            });
         }
     }
 }

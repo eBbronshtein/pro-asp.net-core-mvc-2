@@ -24,9 +24,10 @@ namespace UrlsAndRoutes
             app.UseStaticFiles();
             app.UseMvc(
                 routes => {
-                    routes.MapRoute(name: "MyRoute",
-                    template: "{controller=Home}/{action=Index}/{id:range(10,20)?}");
-            });
+                    routes.MapRoute(
+                        name: "MyRoute",
+                        template: "{controller=Home}/{action=Index}/{id:alpha:minlength(6)?}");
+                });
         }
     }
 }

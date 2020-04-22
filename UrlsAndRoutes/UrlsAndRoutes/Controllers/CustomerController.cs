@@ -4,7 +4,7 @@ namespace UrlsAndRoutes.Controllers
 {
     public class CustomerController : Controller
     {
-        [Route("myroute")]
+        [Route("[controller]/MyAction")]
         public ViewResult Index() => View(
             "Result",
             new Result

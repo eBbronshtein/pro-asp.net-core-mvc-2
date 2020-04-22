@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Routing;
+using UrlsAndRoutes.Infrastructure;
 
 namespace UrlsAndRoutes
 {
@@ -26,7 +28,9 @@ namespace UrlsAndRoutes
                 routes => {
                     routes.MapRoute(
                         name: "MyRoute",
-                        template: "{controller=Home}/{action=Index}/{id:alpha:minlength(6)?}");
+                        template: "{controller}/{action}/{id?}",
+                        defaults: new { controller = "Home", action = "Index" },
+                        constraints: new { id = new WeekDayConstraint() });
                 });
         }
     }

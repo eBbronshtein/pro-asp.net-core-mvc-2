@@ -27,6 +27,10 @@
             </tr>
         }
     </table>
-    <a asp-controller="Home" asp-action="Index" asp-route-id="Hello">This is an outgoing url</a>
+    <a asp-controller="Home" asp-action="Index" asp-route-id="Hello"
+       asp-protocol="https" asp-host="myserver.mydomain.com"
+       asp-fragment="myFragment">
+        This is an outgoing URL
+    </a>
 </body>
 </html>

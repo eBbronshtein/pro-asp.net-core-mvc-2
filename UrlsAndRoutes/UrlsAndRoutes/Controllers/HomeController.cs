@@ -36,6 +36,7 @@ namespace UrlsAndRoutes.Controllers
                 Action = nameof(List),
             };
             r.Data["Id"] = id ?? "<no value>";
+            r.Data["Url"] = Url.Action("CustomVariable", "Home", new { id = 100 });
             r.Data["catchall"] = RouteData.Values["catchall"];
 
             return View("Result", r);

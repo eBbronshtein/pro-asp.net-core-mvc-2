@@ -4,6 +4,7 @@ using ControllersAndActions.Infrastructure;
 
 namespace ControllersAndActions.Controllers
 {
+    // change in master
     public class HomeController : Controller
     {
         public ViewResult Index() => View("SimpleForm");

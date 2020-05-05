@@ -6,6 +6,6 @@ namespace ControllersAndActions.Controllers
 {
     public class ExampleController : Controller
     {
-        public StatusCodeResult Index() => StatusCode(StatusCodes.Status404NotFound);
+        public StatusCodeResult Index() => NotFound();
     }
 }

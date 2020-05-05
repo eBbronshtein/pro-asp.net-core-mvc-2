@@ -5,6 +5,8 @@ namespace ControllersAndActions.Controllers
 {
     public class ExampleController : Controller
     {
-        public JsonResult Index() => Json(new[] { "Alice", "Bob", "Joe" });
+        //public ContentResult Index() => Content("[\"Alice\",\"Bob\",\"Joe\"]", "application/json");
+
+        public ObjectResult Index() => Ok(new string[] { "Alice", "Bob", "Joe" });
     }
 }

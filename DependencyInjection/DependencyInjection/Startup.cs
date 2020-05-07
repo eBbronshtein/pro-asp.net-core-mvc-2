@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DependencyInjection.Infrastructure;
+using DependencyInjection.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +15,7 @@ namespace DependencyInjection
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            TypeBroker.SetRepositoryType<AlternateRepository>();
             services.AddMvc();
         }
 

@@ -17,6 +17,7 @@ namespace DependencyInjection
         {
             services.AddTransient<IRepository, MemoryRepository>();
             services.AddTransient<IModelStorage, DictionaryStorage>();
+            services.AddTransient<ProductTotalizer>();
             services.AddMvc();
         }
 

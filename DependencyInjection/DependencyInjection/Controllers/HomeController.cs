@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using DependencyInjection.Models;
 using DependencyInjection.Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DependencyInjection.Controllers
 {
@@ -17,6 +18,8 @@ namespace DependencyInjection.Controllers
 
         public ViewResult Index([FromServices]ProductTotalizer totalizer)
         {
+            IRepository repository = HttpContext.RequestServices.GetService<IRepository>();
+
             ViewBag.HomeController = repository.ToString();
             ViewBag.Totalizer = totalizer.Repository.ToString();
             return View(repository.Products);

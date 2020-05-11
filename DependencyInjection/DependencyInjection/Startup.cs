@@ -13,8 +13,24 @@ namespace DependencyInjection
 {
     public class Startup
     {
+        private IHostingEnvironment env;
+
+        public Startup(IHostingEnvironment hostEnv) => env = hostEnv;
+
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IRepository>(provider => {
+                if (env.IsDevelopment())
+                {
+                    var x = provider.GetService<MemoryRepository>();
+                    return x;
+                }
+                else
+                {
+                    return new AlternateRepository();
+                }
+            });
+            services.AddTransient<MemoryRepository>();
             services.AddTransient<IRepository, MemoryRepository>();
             services.AddTransient<IModelStorage, DictionaryStorage>();
             services.AddTransient<ProductTotalizer>();
